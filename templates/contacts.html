@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Контакты — Тамга{% endblock %}
+{% block content %}
+<section class="reviews-section section-green">
+    <div class="container">
+        <h2>Отзывы наших клиентов</h2>
+        <div class="reviews-grid">
+            {% for review in reviews %}
+            <article class="review-card">
+                <img src="{{ url_for('static', filename=review.image) }}" alt="{{ review.name }}">
+                <div>
+                    <p>{{ review.text }}</p>
+                    <strong>{{ review.name }}</strong>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="feedback-section" style="background-image: linear-gradient(rgba(16, 9, 6, .72), rgba(16, 9, 6, .82)), url('{{ url_for('static', filename='images/contacts-bg.png') }}');">
+    <div class="container feedback-inner">
+        <h2>Обратная связь</h2>
+        <form class="feedback-form" method="post">
+            <input type="text" name="name" placeholder="Имя">
+            <input type="email" name="email" placeholder="E-mail">
+            <textarea name="message" placeholder="Текст"></textarea>
+            <button class="btn btn-primary" type="submit">Отправить</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

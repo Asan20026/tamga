@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Юрты — Тамга{% endblock %}
+{% block content %}
+<section class="hero hero-page" style="background-image: linear-gradient(rgba(15, 6, 4, .60), rgba(15, 6, 4, .78)), url('{{ url_for('static', filename='images/yurts-hero.png') }}');">
+    <div class="container hero-page-content narrow">
+        <div class="eyebrow">ЮРТЫ «ТАМГА»</div>
+        <h1>Юрты «Тамга»</h1>
+        <p>Юрты «Тамга» — это уникальное сочетание традиционной архитектуры и современного комфорта. Пространство, где можно отключиться от суеты и почувствовать настоящий ритм природы.</p>
+        <p>Тёплые интерьеры, натуральные материалы и уединённая атмосфера создают ощущение уюта в любое время года. Каждая юрта — это отдельный мир, наполненный тишиной, теплом и спокойствием.</p>
+        <div class="hero-actions center">
+            <a class="btn btn-light" href="{{ telegram_link }}" target="_blank" rel="noopener">Забронировать</a>
+        </div>
+    </div>
+</section>
+
+<section class="yurts-section section-darkgreen">
+    <div class="container">
+        <div class="section-head section-head-light">
+            <span>ГЛЭМПИНГ</span>
+            <h2>Юрты в едином стиле</h2>
+        </div>
+        <div class="carousel" data-carousel>
+            <button class="carousel-arrow prev" type="button" aria-label="Назад">‹</button>
+            <div class="carousel-track">
+                {% for yurt in yurts %}
+                <article class="yurt-card {% if loop.first %}active{% endif %}">
+                    <div class="yurt-photo-wrap">
+                        <img class="yurt-photo" src="{{ url_for('static', filename=yurt.image) }}" alt="{{ yurt.type }}">
+                    </div>
+                    <div class="yurt-copy">
+                        <div class="yurt-tag">{{ yurt.tag }}</div>
+                        <h3>{{ yurt.title }}</h3>
+                        <h4>{{ yurt.subtitle }}</h4>
+                        <p>{{ yurt.description }}</p>
+                        <div class="chips">
+                            <span>{{ yurt.guests }}</span>
+                            <span>{{ yurt.price }}</span>
+                            <span>{{ yurt.feature }}</span>
+                        </div>
+                        <div class="card-actions">
+                            <a class="btn btn-primary" href="{{ telegram_link }}" target="_blank" rel="noopener">Забронировать</a>
+                            <a class="btn btn-secondary" href="{{ telegram_link }}" target="_blank" rel="noopener">Уточнить детали</a>
+                        </div>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+            <button class="carousel-arrow next" type="button" aria-label="Вперед">›</button>
+            <div class="carousel-dots"></div>
+        </div>
+    </div>
+</section>
+{% endblock %}

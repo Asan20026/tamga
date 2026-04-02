@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Тамга{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="site-header {% block header_class %}{% endblock %}">
+        <div class="container nav-row">
+            <a class="brand" href="{{ url_for('home') }}">Тамга</a>
+            <button class="burger" type="button" aria-label="Открыть меню" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="site-nav" id="site-nav">
+                <a href="{{ url_for('about') }}">О нас</a>
+                <a href="{{ url_for('yurts') }}">Глэмпинг</a>
+                <a href="{{ url_for('restaurant') }}">Ресторан</a>
+                <a href="{{ url_for('contacts') }}">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-wrap container">
+          {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+
+    <footer class="site-footer">
+        <div class="container footer-row">
+            <div>
+                <div class="footer-brand">Этно-комплекс «Тамга»</div>
+                <p>Отдых в ритме традиций.</p>
+            </div>
+            <div class="footer-links">
+                <a href="{{ url_for('about') }}">О нас</a>
+                <a href="{{ url_for('yurts') }}">Юрты</a>
+                <a href="{{ url_for('restaurant') }}">Ресторан</a>
+                <a href="{{ url_for('contacts') }}">Контакты</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

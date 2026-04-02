@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Тамга — главная{% endblock %}
+{% block header_class %}header-overlay{% endblock %}
+{% block content %}
+<section class="hero hero-home" style="background-image: linear-gradient(rgba(10, 7, 5, .62), rgba(10, 7, 5, .72)), url('{{ url_for('static', filename='images/home-hero.png') }}');">
+    <div class="hero-top container">
+        <nav class="hero-links desktop-only">
+            <a href="{{ url_for('about') }}">О нас</a>
+            <a href="{{ url_for('yurts') }}">Глэмпинг</a>
+            <a href="{{ url_for('restaurant') }}">Ресторан</a>
+            <a href="{{ url_for('contacts') }}">Контакты</a>
+        </nav>
+        <div class="hero-logo">TAMGA</div>
+        <div class="hero-social desktop-only">
+            <a href="#" aria-label="Telegram">TG</a>
+            <a href="#" aria-label="VK">VK</a>
+            <a href="#" aria-label="Maps">•</a>
+        </div>
+    </div>
+    <div class="hero-center container">
+        <h1>Этно-комплекс «Тамга»</h1>
+        <p>Отдых в ритме традиций</p>
+        <div class="hero-actions">
+            <a class="btn btn-primary" href="{{ url_for('yurts') }}">Юрты</a>
+            <a class="btn btn-primary alt" href="{{ url_for('restaurant') }}">Ресторан</a>
+        </div>
+    </div>
+    <a class="hero-arrow" href="{{ url_for('about') }}">⌄</a>
+</section>
+{% endblock %}

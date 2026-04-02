@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}О нас — Тамга{% endblock %}
+{% block content %}
+<section class="about-intro section-beige">
+    <div class="container about-grid">
+        <div class="about-copy">
+            <h2>Место, где отдых становится опытом</h2>
+            <p>«Тамга» — это этно-архитектурный комплекс в Иглинском районе, созданный для спокойного и осмысленного отдыха.</p>
+            <p>Здесь сочетаются природа, традиции и современный комфорт. Мы создали пространство, где можно замедлиться, почувствовать ритм жизни и провести время вне городской суеты.</p>
+        </div>
+        <div class="about-gallery">
+            <img src="{{ url_for('static', filename='images/about-horse.png') }}" alt="Лошадь">
+            <img src="{{ url_for('static', filename='images/about-tea.png') }}" alt="Чай и угощения">
+            <img src="{{ url_for('static', filename='images/about-yurt.png') }}" alt="Юрта">
+            <img src="{{ url_for('static', filename='images/about-archery.png') }}" alt="Стрельба из лука">
+        </div>
+    </div>
+</section>
+
+<section class="activities section-green">
+    <div class="container">
+        <h2>Чем заняться в «Тамга»</h2>
+        <div class="activities-grid">
+            {% for title, text in activities %}
+            <article class="activity-item">
+                <h3>{{ title }}</h3>
+                <p>{{ text }}</p>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
