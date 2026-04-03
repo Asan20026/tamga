@@ -1,12 +1,21 @@
 {% extends 'base.html' %}
+
 {% block title %}Ресторан — Тамга{% endblock %}
+
 {% block content %}
+
 <section class="hero hero-page" style="background-image: linear-gradient(rgba(17, 8, 5, .64), rgba(17, 8, 5, .78)), url('{{ url_for('static', filename='images/restaurant-hero.png') }}');">
     <div class="container hero-page-content narrow">
         <div class="eyebrow">ТРАДИЦИОННАЯ КУХНЯ И ЖИВАЯ АТМОСФЕРА</div>
         <h1>Ресторан</h1>
-        <p>Ресторан «Тамга» — это традиционная башкирская кухня, открытый очаг и живая атмосфера. Блюда готовятся по аутентичным рецептам, а огонь становится частью пространства.</p>
+
+        <p>
+            Ресторан «Тамга» — это традиционная башкирская кухня, открытый очаг и живая атмосфера.
+            Блюда готовятся по аутентичным рецептам, а огонь становится частью пространства.
+        </p>
+
         <p>В меню — мясные блюда, домашние колбасы и сезонные продукты.</p>
+
         <div class="hero-actions center">
             <a class="btn btn-primary" href="#menu">Меню</a>
             <a class="btn btn-light" href="{{ telegram_link }}" target="_blank" rel="noopener">Забронировать</a>
@@ -20,10 +29,13 @@
             <span>БАШКИРСКАЯ КУХНЯ</span>
             <h2>Меню</h2>
         </div>
+
         <div class="menu-grid">
             {% for item in menu_items %}
             <article class="menu-card">
+
                 <img src="{{ url_for('static', filename='images/' + item.image) }}" alt="{{ item.name }}">
+
                 <div class="menu-card-body">
                     <div class="menu-topline">
                         <h3>{{ item.name }}</h3>
@@ -31,9 +43,11 @@
                     </div>
                     <p>{{ item.description }}</p>
                 </div>
+
             </article>
             {% endfor %}
         </div>
     </div>
 </section>
+
 {% endblock %}
