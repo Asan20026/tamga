@@ -24,6 +24,7 @@
             {% for item in menu_items %}
             <article class="menu-card">
                 <img src="{{ url_for('static', filename=item.image) }}" alt="{{ item.name }}">
+                <img src="{{ url_for('static', filename='images/' + item.image) }}" alt="{{ item.name }}">
                 <div class="menu-card-body">
                     <div class="menu-topline">
                         <h3>{{ item.name }}</h3>
